@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px){
+        @content
+    }
+}
+
+$collorPrimary: #f39a34;
+$collorBlack: #131313;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+// Navbar
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 10px;
+    z-index: 99;
+
+    .container {
+        position: relative;
+        background: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        padding: .8em 1.5em;
+        border-radius: 10px;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+        align-items: center;
+    }
+
+    &__brand {
+        text-decoration: none;
+        color: $collorBlack;
+        font-weight: bold;
+        font-size: 1.2em;
+        span {
+            color: $collorPrimary;
+        }
+    }
+
+    &__menu {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        z-index: -1;
+        background-color: #ffffff;
+        width: 100%;
+        padding: 40px 0 0 0;
+        list-style-type: none;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+        display: none;
+        overflow: hidden;
+        height: 320px;
+        animation: menu .2s ease;
+
+        &__item {
+            padding: .8em 1em;
+
+            a {
+                text-decoration: none;
+                color: $collorBlack;
+            }
+        }
+    }
+}
+
+.btn-gs {
+    text-align: center;
+    background: $collorPrimary;
+    display: block;
+    color: #ffffff !important;
+    border-radius: 10px;
+    padding: .5em .8em;
+}
+
+@keyframes menu {
+    from {
+        display: none;
+        height: 0;
+    }
+    to {
+        display: block;
+        height: 320px;
+    }
+}
+
+
+.toggle__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid $collorPrimary;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 20px;
+        height: 3px;
+        background-color: $collorBlack;
+        margin-bottom: 4px;
+        border-radius: 25px;
+
+        &:nth-child(2) {
+            width: 14px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+// End Navbar
+
+// Hero
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba($color: #ec6b20, $alpha: .7), rgba($color: #3a1c08, $alpha: .7)), url('../assets/slider1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    
+    .container {
+        position: relative;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__content {
+        // position: absolute;
+        // top: 30%;
+
+        &__title {
+            font-weight: 600;
+            font-size: 2.5em;
+            color: #ffffff;
+            z-index: 1;
+        }
+    
+        &__desc {
+            text-align: center;
+            width: 90%;
+            margin: 20px auto 0 auto;
+            font-size: .9em;
+            color: white;
+            line-height: 1.7;
+        }
+    }
+
+    &__socmed {
+        position: absolute;
+        bottom: 5%;
+        left: 0;
+        
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+
+                a {
+                    font-size: 2em;
+                    color: #ffffff;
+                }
+                
+            }
+        }
+    }
+}
+
+.btn-gs-hero {
+    width: 180px;
+    margin: 20px auto 0 auto;
+}
+// End Hero
+
+
+// Services
+.service {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    &__desc {
+        margin-top: 12%;
+        width: 100%;
+        h1 {
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+        p {
+            font-size: .8em;
+            line-height: 2;
+        }
+    }
+
+    &__items {
+        margin: 20% 0;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            li {
+                margin: 1.8em auto 0 auto;
+                width: 70%;
+                transition: .1s all;
+
+                span {
+                    display: block;
+                    img {
+                        width: 20%;
+                    }
+                }
+
+                h3 {
+                    font-weight: 600;
+                    font-weight: 1.3em;
+                    margin: .5em 0;
+                }
+
+                p {
+                    line-height: 2;
+                    font-size: .8em;
+                }
+
+                &:hover {
+                    border-top: 1px solid #b8b8b8;
+                    border-left: 1px solid #b8b8b8;
+                    border-right: 1px solid #b8b8b8;
+                    border-bottom: 5px solid #b8b8b8;
+                    padding: .9em;
+                    border-radius: 10px;
+                    transition: .1s all;
+                }
+            }
+        }
+    }
+
+}
+
+@include tablet {
+    .toggle__menu {
+        display: none;
+    }
+    
+    .navbar {
+        &__menu {
+            position: inherit;
+            display: flex;
+            align-items: center;
+            height: auto;
+            margin: 0;
+            z-index: 1;
+            top: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            width: auto;
+            animation: none;
+
+            &__item {
+                display: inline-block;
+                padding: .1em .3em;
+                margin-right: 35px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }   
+    }
+
+    .hero {
+        &__content {
+            top: 40%;
+        }
+    }
+
+    .service {
+        width: 100%;
+        position: relative;
+        text-align: center;
+
+        &__desc {
+            margin-top: 12%;
+            width: 100%;
+            h1 {
+                font-weight: 600;
+                font-size: 1.3em;
+            }
+            p {
+                font-size: .8em;
+                line-height: 2;
+            }
+        }
+
+        &__items {
+            margin: 10% 0;
+
+            ul {
+                margin: 0 auto;
+                width: 100%;
+                padding: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
